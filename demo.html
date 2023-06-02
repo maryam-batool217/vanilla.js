@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        .searchData {
+            width: 80%;
+            border: 1px solid black;
+            border-radius: 10px;
+
+        }
+
+        .input-s {
+            padding: 10px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+
+       <div class="searchData d-flex justify-content-center align-items-center"><input
+               class="form-control form-control-lg input-s " id="user-input" type="text" placeholder="search here"
+               aria-label=".form-control-lg example"><i class="bi bi-search p-3" onclick="searchfunc()"></i>
+       </div>
+
+       <div id="datashow">
+
+       </div>
+
+       <table border="4" cellpadding="15" class="mt-5">
+          
+           <tr id="tableHeading" style="border: 1px solid black;" >
+
+           </tr>
+           <tr id="dataTable" ></tr>
+
+       </table>
+
+      
+
+  
+   <table class="table">
+       <thead id="thead">
+           <tr>
+             <th scope="col">ID</th>
+             <th scope="col">NAME</th>
+             <th scope="col">DEGREE</th>
+             <th scope="col">UNIVERSITY</th>
+            
+           </tr>
+         </thead>
+     <tbody id="tbody">
+
+     </tbody>
+     </table>
+    </div>
+
+<script>
+ const DATA = [
+   {
+       id: 0,
+       name: "Maryam",
+       status: "Graduated",
+       university: "IUB",
+     
+   },
+
+   {
+       id: 1,
+       name: "Eman",
+       status: "Graduated",
+       university: "IUB",
+       
+   },
+   {
+       id: 2,
+       name: "Batool",
+       status: "In Progress",
+       university: "PU",
+       
+   },
+   {
+       id: 3,
+       name: "Tuba",
+       status: "In Progress",
+       university: "GCUF",
+       
+   },
+   {
+       id: 4,
+       name: "Kiran",
+       status: "In Progress",
+       university: "BZU",
+       
+   },
+   {
+       id: 5,
+       name: "Kanwal",
+       status: "In Progress",
+       university: "IUB",
+       
+   },
+   {
+       id: 6,
+       name: "Irum",
+       status: "In Progress",
+       university: "GCUF",
+       
+
+   },
+   {
+       id: 7,
+       name: "Aneeza",
+       status: "In Progress",
+       university: "PU",
+       
+   },
+   {
+       id: 8,
+       name: "Muntaha",
+       status: "In Progress",
+       university: "GCUF",
+       
+   },
+   {
+       id: 9,
+       name: "Hafsa",
+       status: "In Progress",
+       university: "IUB",
+       
+   },
+   {
+       id: 10,
+       name: "Musfera",
+       status: "In Progress",
+       university: "IUB",
+       
+   },
+
+]
+//to print table with js                               
+let renderTable = () => {
+   var tbody = document.getElementById("tbody");
+
+
+   DATA.forEach((val, index) => {
+       let value = Object.values(DATA[index]);
+
+
+       
+       let line = document.createElement('tr');
+
+       for (value of Object.values(DATA[index])) {
+           line.innerHTML += `<td > ${value} </td>`;
+       }
+       tbody.appendChild(line);
+
+     
+   })
+}
+renderTable()
+
+let searchfunc=()=>{
+console.log("hello")
+   let userInput=document.getElementById('user-input').value
+ DATA.forEach((value,index)=>{
+   if(userInput==DATA[index].id)
+   highlighter(value,index)
+ })
+ 
+   }
+   let highlighter=(value ,index)=>{
+       var tbody = document.getElementById("tbody");
+       let ro =tbody.rows[index]
+       ro.style.backgroundColor="red"
+       console.log(ro)
+   }
+
+
+</script>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+ </body>
+
+</html>
